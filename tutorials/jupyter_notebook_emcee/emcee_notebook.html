@@ -188,8 +188,8 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="What-problem-are-you-trying-to-solve?">What problem are you trying to solve?<a class="anchor-link" href="#What-problem-are-you-trying-to-solve?">&#182;</a></h2><p>A major advantage of notebooks is that you can utilise <strong>Markdown</strong> and $\LaTeX$ to incorperate discussion and directions into your code. This will likely make it more readable for another user (or even your future self!)</p>
-<p>In this example, we're going to work through an <code>emcee</code> example, where we fit a model to some data. The most common example is a linear fit to data with errors, but I'm going to cahnge it up a little to prove you can use it for models other than straight lines. Let's examine how well we can fit the general sinusiod: 
+<h2 id="What-problem-are-you-trying-to-solve?">What problem are you trying to solve?<a class="anchor-link" href="#What-problem-are-you-trying-to-solve?">&#182;</a></h2><p>A major advantage of notebooks is that you can utilize <strong>Markdown</strong> and $\LaTeX$ to incorporate discussion and directions into your code. This will likely make it more readable for another user (or even your future self!)</p>
+<p>In this example, we're going to work through an <code>emcee</code> example, where we fit a model to some data. The most common example is a linear fit to data with errors, but I'm going to change it up a little to prove you can use it for models other than straight lines. Let's examine how well we can fit the general sinusoid: 
 $$y(t) = A\sin(2\pi ft+ \phi),$$
 where $A$ is the amplitude, $f$ is the frequency, $t$ is time, and $\phi$ is the phase.</p>
 
@@ -210,7 +210,7 @@ where $A$ is the amplitude, $f$ is the frequency, $t$ is time, and $\phi$ is the
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Commands begining with '%' are known as magic commands in IPython. Depending on what you'd like to do, there are any number of useful magic commands. By far the most common command I use is <code>%matplotlib inline</code> which incorporates plots directly into the notebook, rather than being opened in a new window:</p>
+<p>Commands beginning with '%' are known as magic commands in IPython. Depending on what you'd like to do, there are any number of useful magic commands. By far the most common command I use is <code>%matplotlib inline</code> which incorporates plots directly into the notebook, rather than being opened in a new window:</p>
 
 </div>
 </div>
@@ -554,7 +554,7 @@ EBGR4hg+RESkOIYPEREp7v8DD6+RO4dRbZoAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Establishing-the-model">Establishing the model<a class="anchor-link" href="#Establishing-the-model">&#182;</a></h2><p>Now define the likelihood function. This is the probablility of our data given our model (including its free parameters). Traditionally, we define the logarithm of the likelihood function.</p>
+<h2 id="Establishing-the-model">Establishing the model<a class="anchor-link" href="#Establishing-the-model">&#182;</a></h2><p>Now define the likelihood function. This is the probability of our data given our model (including its free parameters). Traditionally, we define the logarithm of the likelihood function.</p>
 $$ L_i = \frac{1}{\sqrt{2\pi \sigma_i^2}} \exp \left( -\frac{1}{2} \frac{(x_i - \mu_i)^2}{\sigma_i^2} \right)$$<p>Likelihood values must then be multiplied together, alternatively, their logarithms may be summed:</p>
 $$ \ln(L) = -\frac{1}{2} \sum_i \left( \ln(2\pi) + \ln(\sigma_i^2) + \frac{(x_i - \mu_i)^2}{\sigma_i^2} \right) $$
 </div>
@@ -582,7 +582,7 @@ $$ \ln(L) = -\frac{1}{2} \sum_i \left( \ln(2\pi) + \ln(\sigma_i^2) + \frac{(x_i 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We may wish to impose priors on our observations. The prior represents any information you already know about your parameters. For example, perhaps we are modelling some sort of physical system, and we know that the amplitude cannot be negative. Thus, we would wish to exclude any evaluations of the likelihood here, since we know this would give an unphysical result. Let us impose the condition $A>0$. We also know that the phase must be given by $0 \ge \phi < 2\pi$.</p>
+<p>We may wish to impose priors on our observations. The prior represents any information you already know about your parameters. For example, perhaps we are modelling some sort of physical system, and we know that the amplitude cannot be negative. Thus, we would wish to exclude any evaluations of the likelihood here, since we know this would give an unphysical result. Let us impose the condition $A>0$. We also know that the phase must be given by $0 \ge \phi < 2\pi$, and for the moment, we will also require the frequency to be positive, $f>0$.</p>
 
 </div>
 </div>
@@ -610,7 +610,7 @@ $$ \ln(L) = -\frac{1}{2} \sum_i \left( \ln(2\pi) + \ln(\sigma_i^2) + \frac{(x_i 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We can now define the posterior distibution, which is the product of the product of the likelihood and prior</p>
+<p>We can now define the posterior distribution, which is the product of the product of the likelihood and prior</p>
 
 </div>
 </div>
@@ -637,7 +637,7 @@ $$ \ln(L) = -\frac{1}{2} \sum_i \left( \ln(2\pi) + \ln(\sigma_i^2) + \frac{(x_i 
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Initialising-emcee">Initialising emcee<a class="anchor-link" href="#Initialising-emcee">&#182;</a></h2><p>The key parameters for emcee (aside from the likelihood defined earlier) are the number of dimensions and number of walkers. $n_{dim}$ is given by the number of free parameters (in our case, 3), and $n_{walkers}$ is the number of chains we'd like to generate. We'll also need to specify an initial starting position for every walker. A good approach is to pick a sensible estimate and distribute the walkers randomly around this point</p>
+<h2 id="Initializing-emcee">Initializing emcee<a class="anchor-link" href="#Initializing-emcee">&#182;</a></h2><p>The key parameters for emcee (aside from the likelihood defined earlier) are the number of dimensions and number of walkers. $n_{dim}$ is given by the number of free parameters (in our case, 3), and $n_{walkers}$ is the number of chains we'd like to generate. We'll also need to specify an initial starting position for every walker. A good approach is to pick a sensible estimate and distribute the walkers randomly around this point</p>
 
 </div>
 </div>
@@ -3055,6 +3055,19 @@ True
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
